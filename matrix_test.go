@@ -210,9 +210,7 @@ func testEncMatrixInvertible(t *testing.T, d, p int) {
 // so skip the test by default, avoiding waste time in develop process.
 func TestEncMatrixInvertibleRandom(t *testing.T) {
 
-	if testing.Short() {
-		t.Skip("skip the test, because it may cost too much time")
-	}
+	iambig(t)
 
 	for d := 1; d < 256; d++ {
 		for p := 1; p < 256; p++ {
@@ -339,4 +337,10 @@ func makeCauchyMatrix(n int) matrix {
 		}
 	}
 	return m
+}
+
+func iambig(t *testing.T) {
+	if testing.Short() {
+		t.Skip()
+	}
 }
